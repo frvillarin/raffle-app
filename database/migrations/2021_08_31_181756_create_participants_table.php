@@ -16,8 +16,8 @@ class CreateParticipantsTable extends Migration
         Schema::create('participants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('department',['hannah','a51','payout','app_request','livechat','operator','facilities','admin','nurse','spec_ops','audit','it','devs','marketing','ocb']);
-            $table->enum('shift',['morning','mid','gy']);
+            $table->enum('department',['HANNAH','A51 CSR','PAYOUT','APP REQUEST','LIVECHAT','OPERATOR','FACILITIES','ADMIN','COMPANY NURSE','SPECIAL OPS','AUDIT','IT','DEVS','MARKETING','OCB']);
+            $table->enum('shift',['MORNING','MID','GY']);
             $table->timestamps();
         });
     }
