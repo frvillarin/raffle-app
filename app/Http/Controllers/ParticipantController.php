@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Participant;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ParticipantController extends Controller
 {
@@ -14,7 +15,7 @@ class ParticipantController extends Controller
      */
     public function index()
     {
-        //
+        return Inertia::render('Admin/Participants/List');
     }
 
     /**
