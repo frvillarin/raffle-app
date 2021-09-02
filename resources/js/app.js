@@ -5,6 +5,7 @@ import Vue from 'vue';
 import { App as InertiaApp, plugin as InertiaPlugin } from '@inertiajs/inertia-vue';
 import PortalVue from 'portal-vue';
 import { InertiaProgress } from '@inertiajs/progress'
+import Notifications from 'vue-notification'
 
 import route from 'ziggy-js';
 import { Ziggy } from "@/ziggy";
@@ -12,6 +13,7 @@ import { Ziggy } from "@/ziggy";
 Vue.mixin({ methods: { route } });
 Vue.use(InertiaPlugin);
 Vue.use(PortalVue);
+Vue.use(Notifications)
 
 const app = document.getElementById('app');
 const decodedZiggy = JSON.parse(atob(Ziggy))
