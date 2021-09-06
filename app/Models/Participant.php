@@ -14,4 +14,5 @@ class Participant extends Model
         'department',
         'shift',
     ];
+
 }
