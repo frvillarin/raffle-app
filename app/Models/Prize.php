@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Prize extends Model
 {
     use HasFactory;
+
+    protected $fillable= [
+        'title',
+    ];
+
+    public function winner()
+    {
+        return $this->hasOne(Winner::class);
+    }
 }

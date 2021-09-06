@@ -28,6 +28,13 @@
                                     Participants
                                 </jet-nav-link>
                             </div>
+
+                            <!-- Prizes -->
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('admin.prizes.index')" :active="route().current('admin.prizes.*')">
+                                    Prizes
+                                </jet-nav-link>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">

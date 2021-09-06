@@ -63,7 +63,6 @@ class ParticipantController extends Controller
         }
     }
 
-
     public function importData(Request $request)
     {
         $request->validate([
@@ -101,12 +100,7 @@ class ParticipantController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Participant $participant
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Participant $participant)
     {
         return Inertia::render('Admin/Participants/Edit', [
@@ -155,5 +149,12 @@ class ParticipantController extends Controller
         $participant->delete();
 
         return redirect()->route('admin.participants.index')->withMessage('Participant has been deleted!');
+    }
+
+    public function play()
+    {
+        return Inertia::render('Admin/Raffle/Play', [
+            'participants' => Participant::all()
+        ]);
     }
 }

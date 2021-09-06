@@ -17,8 +17,6 @@ class CreateWinnersTable extends Migration
             $table->id();
             $table->foreignId('participant_id')->constrained();
             $table->foreignId('prize_id')->constrained();
-            $table->enum('status',['claimed','unclaimed','disqualified']);
-            $table->string('image');
             $table->timestamps();
         });
     }

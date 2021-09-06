@@ -32,6 +32,9 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->as('admin.')->
     Route::get('dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
     Route::resource('participants', App\Http\Controllers\ParticipantController::class);
     Route::post('import', [App\Http\Controllers\ParticipantController::class, 'importData'])->name('participants.importData');
+    Route::resource('prizes', App\Http\Controllers\PrizeController::class);
+    Route::get('prizes/{prize}/draw', [App\Http\Controllers\PrizeController::class, 'drawRaffle'])->name('prizes.draw');
 });

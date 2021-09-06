@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Participant;
 use App\Models\Winner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class WinnerController extends Controller
 {
@@ -27,15 +31,24 @@ class WinnerController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            Winner::create([
+                'prize_id' => $request->prize_id,
+                'participant_id' => $request->participant_id,
+            ]);
+            DB::commit();
+            return response()->json([
+                'success' => true
+            ]);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'error' => $e->getMessage()
+            ]);
+        }
     }
 
     /**
