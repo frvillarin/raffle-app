@@ -24,6 +24,17 @@ Route::get('/', function () {
     ]);
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->name('dashboard');
+//Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//    return Inertia::render('Dashboard');
+//})->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('admin')->as('admin.')->group(function () {
+    Route::get('dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+
+    Route::resource('participants', App\Http\Controllers\ParticipantController::class);
+    Route::post('import', [App\Http\Controllers\ParticipantController::class, 'importData'])->name('participants.importData');
+    Route::resource('prizes', App\Http\Controllers\PrizeController::class);
+    Route::get('prizes/{prize}/draw', [App\Http\Controllers\PrizeController::class, 'drawRaffle'])->name('prizes.draw');
+});

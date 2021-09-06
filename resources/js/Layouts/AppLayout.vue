@@ -10,15 +10,29 @@
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex-shrink-0 flex items-center">
-                                <inertia-link :href="route('dashboard')">
+                                <inertia-link :href="route('admin.dashboard')">
                                     <jet-application-mark class="block h-9 w-auto" />
                                 </inertia-link>
                             </div>
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                                <jet-nav-link :href="route('admin.dashboard')" :active="route().current('admin.dashboard')">
                                     Dashboard
+                                </jet-nav-link>
+                            </div>
+
+                            <!-- Participants -->
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('admin.participants.index')" :active="route().current('admin.participants.*')">
+                                    Participants
+                                </jet-nav-link>
+                            </div>
+
+                            <!-- Prizes -->
+                            <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <jet-nav-link :href="route('admin.prizes.index')" :active="route().current('admin.prizes.*')">
+                                    Prizes
                                 </jet-nav-link>
                             </div>
                         </div>
@@ -140,9 +154,9 @@
                 <!-- Responsive Navigation Menu -->
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
-                        <jet-responsive-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
+                        <jet-nav-link :href="route('admin.dashboard')" :active="route().current('admin.dashboard')">
                             Dashboard
-                        </jet-responsive-nav-link>
+                        </jet-nav-link>
                     </div>
 
                     <!-- Responsive Settings Options -->
@@ -259,7 +273,7 @@
 
         methods: {
             switchToTeam(team) {
-                this.$inertia.put(route('current-team.update'), {
+                this.$inertia.put(this.route('current-team.update'), {
                     'team_id': team.id
                 }, {
                     preserveState: false
@@ -267,7 +281,7 @@
             },
 
             logout() {
-                this.$inertia.post(route('logout'));
+                this.$inertia.post(this.route('logout'));
             },
         }
     }

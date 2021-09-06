@@ -27,6 +27,10 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "vue": "^2.6.14"
+        "@inertiajs/progress": "^0.2.6",
+        "vue": "^2.6.14",
+        "vue-confetti": "^2.2.2",
+        "vue-notification": "^1.3.20",
+        "ziggy-js": "^1.4.0"
     }
 }
